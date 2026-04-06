@@ -5,23 +5,34 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap');
 
+/* ── Sadeleştirilmiş Aydınlık Renk Paleti ──────────────── */
 :root {
-  /* Renk Paleti - Sadeleştirilmiş */
-  --bg-paper:    #fcfcfc;    /* Kağıt beyazı */
-  --bg-sidebar:  #f5f7f9;    /* Hafif gri/mavi sidebar */
-  --text-main:   #1a1a1a;    /* Ana metin (tam siyah değil) */
-  --text-muted:  #606770;    /* Yardımcı metin */
-  --accent-gold: #b39347;    /* Daha ağırbaşlı bir altın */
-  --border-soft: #e1e4e8;    /* İnce ayırıcı hatlar */
-  --white:       #ffffff;
-  
-  /* Tipografi */
-  --font-display: 'Playfair Display', serif;
-  --font-body:    'Source Serif 4', serif;
-  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
-  
-  --radius: 6px;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --navy:         #ffffff;    /* Ana arka plan artık beyaz */
+  --navy-mid:     #f8f9fa;    /* Header ve kartlar için çok hafif gri */
+  --navy-light:   #e9ecef;    /* Ayırıcı alanlar */
+  --gold:         #8d722b;    /* Beyaz üzerinde daha okunaklı, koyu altın */
+  --gold-light:   #b39347;    
+  --gold-dim:     #6c757d;    /* Yardımcı metinler için nötr gri */
+  --cream:        #1a1d20;    /* Başlıklar artık koyu (neredeyse siyah) */
+  --cream-dim:    #495057;    /* Alt başlıklar */
+  --white:        #ffffff;
+  --red-accent:   #d93025;
+  --green-accent: #188038;
+  --border:       rgba(0, 0, 0, 0.08); /* İnce, siyahımsı şeffaf çizgiler */
+  --border-dim:   rgba(0, 0, 0, 0.04);
+  --text-body:    #3c4043;    /* Ana metin rengi (füme) */
+  --text-muted:   #70757a;    /* Silik metinler */
+
+  /* Fontlar aynı kalıyor */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+  --radius:    4px;
+  --radius-lg: 8px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.06);
+  --transition: 0.22s ease;
 }
 
 /* ── Reset & Temel ────────────────────────────────────── */
