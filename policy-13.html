@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Option 13 · Fedwire Liquidity Savings Mechanism · Fed BSR Guide</title>
+  <meta name="description" content="Upgrade Fedwire with an LSM to queue and net offsetting payments, reducing settlement reserves. Estimated $100–125B reduction." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">FED<span>/</span>BSR · Guide</div>
+  <nav class="site-nav">
+    <a href="index.html">Overview</a>
+    <a href="policy-1.html" class="active">Policy Options</a>
+  </nav>
+</header>
+
+<main>
+<div class="container">
+
+  <nav class="breadcrumb animate-fade-up">
+    <a href="index.html">Overview</a><span class="sep">›</span><span class="current">Option 13</span>
+  </nav>
+
+  <div class="policy-hero animate-fade-up delay-1">
+    <div class="policy-hero-eyebrow">
+      <span class="card-tag operational">Precautionary</span>
+      <span class="card-tag">Reserve Demand</span>
+    </div>
+    <h1 style="font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:var(--cream);line-height:1.2;margin-bottom:0.5rem;margin-top:0.75rem;">
+      Implement a Liquidity Savings<br/>Mechanism for Fedwire
+    </h1>
+    <p style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;color:var(--gold-dim);text-transform:uppercase;">Policy Option 13 of 15 · FEDS 2026-019 §4.5.4</p>
+  </div>
+
+  <div class="divider" style="margin:1.75rem 0;"></div>
+
+  <div class="policy-layout">
+    <article class="policy-content animate-fade-up delay-2">
+
+      <h2>Fedwire and Intraday Reserve Demand</h2>
+      <p>
+        <strong>Fedwire Funds Service</strong> is the Federal Reserve's real-time gross settlement (RTGS) system — the backbone of the U.S. large-value payment system. Each business day, Fedwire processes roughly <strong>$4–5 trillion in payments</strong> across several hundred thousand transactions. Because Fedwire settles gross and in real time — each payment is settled individually as it is submitted, immediately debiting the sender's reserve account — banks must maintain sufficient reserve balances throughout the day to cover their outgoing payment flows.
+      </p>
+      <p>
+        This creates a significant intraday reserve demand that is largely independent of the overnight liquidity management considerations addressed by the LCR and ILST. Banks hold precautionary reserve buffers specifically to ensure they can meet their largest intraday payment obligations without exhausting their reserve accounts — a concern driven by settlement timing uncertainty even when the bank is solvent and liquid at end-of-day.
+      </p>
+
+      <h2>What Is a Liquidity Savings Mechanism?</h2>
+      <p>
+        A <strong>Liquidity Savings Mechanism (LSM)</strong> is a queuing and bilateral-offsetting algorithm integrated into an RTGS system. Rather than settling every payment immediately upon receipt, an LSM holds non-urgent payments in a queue and periodically scans for offsetting pairs — situations where Bank A owes Bank B $X and Bank B owes Bank A $Y simultaneously. These pairs can be netted and settled with the much smaller net flow ($X–Y) rather than both gross flows ($X + $Y), dramatically reducing the reserves required to complete both settlements.
+      </p>
+      <p>
+        LSMs have been implemented in numerous major RTGS systems globally — the Bank of England's CHAPS introduced an LSM in 2008, the European TARGET2 system uses one, and the Swiss SIC system has employed liquidity recycling mechanisms for decades. Academic studies consistently show LSMs can reduce settlement reserves by <strong>40–75%</strong> while maintaining the same end-of-day settlement finality.
+      </p>
+
+      <h2>Quantifying the Fedwire Reserve Impact</h2>
+      <p>
+        Bech and Garratt (2003) and subsequent Federal Reserve research estimated that if Fedwire operated with bilateral netting, the required intraday reserve liquidity would fall from approximately $200–250 billion to $50–100 billion — a reduction in the range of <strong>$100–200 billion</strong>. The paper's central estimate of <strong>$100–125 billion</strong> is conservative relative to this range, accounting for the fact that not all Fedwire payments are eligible for queuing (time-sensitive payments must settle immediately) and that the netting efficiency depends on the distribution of payment flows across the day.
+      </p>
+
+      <h2>Implementation Challenges</h2>
+      <p>
+        Upgrading Fedwire with an LSM is a substantial technical infrastructure project. Fedwire is mission-critical financial infrastructure, and changes require extensive testing, industry consultation, and parallel-running before deployment. The Fed completed a major Fedwire modernisation (ISO 20022 message standard migration) in 2023–2024, which provides a more flexible base for adding LSM functionality.
+      </p>
+      <p>
+        The primary operational challenge is the design of queuing rules — determining which payments can be queued for netting versus which must settle immediately. Time-sensitive payments (DTC securities settlements, Treasury auction proceeds, certain interbank obligations) cannot be queued without disrupting downstream settlement chains. Getting the queuing priority design right is technically demanding and requires close coordination with Fedwire participants.
+      </p>
+
+      <div class="callout">
+        Major central banks worldwide upgraded their RTGS systems with LSMs years ago. Fedwire is one of the few remaining large RTGS systems without one. The reserve savings of $100–125B represent a direct, mechanical reduction in intraday liquidity demand — no behavioral change required.
+      </div>
+
+      <div class="estimate-box">
+        <div class="box-label">Estimated Reduction in Reserve Demand</div>
+        <div class="estimate-range">
+          <span class="min">$100B</span><span class="sep">—</span>
+          <span class="mid">$112B</span><span class="sep">—</span>
+          <span class="max">$125B</span>
+          <span class="unit">midpoint estimate (narrow range)</span>
+        </div>
+        <div class="estimate-visual">
+          <div class="estimate-visual-track" style="left:48%;width:16%;"></div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;font-family:var(--font-mono);letter-spacing:0.04em;">
+          Narrowest confidence interval among all 15 options. Effect is mechanical (netting algorithm) rather than behavioral, producing more certain estimates. Primary uncertainty: which payments can be queued.
+        </p>
+      </div>
+
+      <h2>Why This Option Is Distinct</h2>
+      <p>
+        Unlike most options in this guide, the Fedwire LSM addresses a <em>different category</em> of reserve demand — intraday settlement reserves — rather than overnight or regulatory liquidity buffers. Banks hold intraday reserves to cover gross payment flows throughout the business day; these reserves may or may not be captured in LCR or ILST calculations depending on how intraday needs are modelled. An LSM would reduce this demand mechanically, independent of any regulatory or pricing reform. It is the most operationally certain option in the paper, with the narrowest uncertainty range.
+      </p>
+
+    </article>
+
+    <aside class="policy-sidebar animate-fade-up delay-3">
+      <div class="sidebar-card">
+        <div class="card-head">Quick Facts</div>
+        <dl>
+          <div class="key-term"><dt>Policy Category</dt><dd>Operational — Intraday Settlement Infrastructure</dd></div>
+          <div class="key-term"><dt>Mechanism</dt><dd>Queue + net offsetting Fedwire payments → reduce gross settlement reserves</dd></div>
+          <div class="key-term"><dt>International Precedent</dt><dd>CHAPS (2008), TARGET2, SIC — all operate LSMs</dd></div>
+          <div class="key-term"><dt>Technical Basis</dt><dd>ISO 20022 migration (2023–24) provides flexible infrastructure</dd></div>
+          <div class="key-term"><dt>Certainty</dt><dd>Highest among 15 options — mechanical effect, not behavioral</dd></div>
+          <div class="key-term"><dt>Paper Section</dt><dd>§4.5.4 — Precautionary Demand</dd></div>
+        </dl>
+      </div>
+      <div class="sidebar-card">
+        <div class="card-head">Key Terms</div>
+        <dl>
+          <div class="key-term"><dt>RTGS</dt><dd>Real-Time Gross Settlement — payment system settling each transaction individually and immediately in central bank money.</dd></div>
+          <div class="key-term"><dt>LSM</dt><dd>Liquidity Savings Mechanism — queuing and netting algorithm that reduces gross settlement flows without changing end-of-day finality.</dd></div>
+          <div class="key-term"><dt>Bilateral Netting</dt><dd>Offsetting two equal-and-opposite payment obligations to settle only the net difference, dramatically reducing reserve usage.</dd></div>
+          <div class="key-term"><dt>ISO 20022</dt><dd>International messaging standard for financial payments; Fedwire completed migration in 2023–24, enabling richer payment data for LSM queuing rules.</dd></div>
+        </dl>
+      </div>
+      <div class="sidebar-card">
+        <div class="card-head">All Policy Options</div>
+        <ul class="nav-policy-list">
+          <li><a href="policy-1.html"><span class="num">01</span>Recognize DW Capacity in LCR</a></li>
+          <li><a href="policy-2.html"><span class="num">02</span>Recalibrate LCR During Stress</a></li>
+          <li><a href="policy-3.html"><span class="num">03</span>Reform ILST Expectations</a></li>
+          <li><a href="policy-4.html"><span class="num">04</span>Revise RLEN Requirements</a></li>
+          <li><a href="policy-5.html"><span class="num">05</span>SLR Relief for Dealers</a></li>
+          <li><a href="policy-6.html"><span class="num">06</span>Equalize T-Bills &amp; Reserves</a></li>
+          <li><a href="policy-7.html"><span class="num">07</span>EFFR Above IORB</a></li>
+          <li><a href="policy-8.html"><span class="num">08</span>Tiering Reserves</a></li>
+          <li><a href="policy-9.html"><span class="num">09</span>Expand FIMA Repo Facility</a></li>
+          <li><a href="policy-10.html"><span class="num">10</span>FBO Demand via Swap Lines</a></li>
+          <li><a href="policy-11.html"><span class="num">11</span>SRP Stigma &amp; Clearing</a></li>
+          <li><a href="policy-12.html"><span class="num">12</span>Sterilize TGA with T-Bills</a></li>
+          <li><a href="policy-13.html" class="current"><span class="num">13</span>Fedwire Liquidity Savings Mechanism</a></li>
+          <li><a href="policy-14.html"><span class="num">14</span>TGA Management Reform</a></li>
+          <li><a href="policy-15.html"><span class="num">15</span>Foreign Reverse Repo Pool</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:2rem 0 4rem;border-top:1px solid var(--border-dim);">
+    <a href="policy-12.html" style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">← Option 12: Sterilize TGA</a>
+    <a href="policy-14.html" style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);">Option 14: TGA Management Reform →</a>
+  </div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <p>Based on: Anderson, Barbarino, Diercks &amp; Miran (2026) — FEDS 2026-019 · <a href="https://doi.org/10.17016/FEDS.2026.019" target="_blank">doi:10.17016/FEDS.2026.019</a></p>
+  <p style="margin-top:0.4rem;">Guide compiled by <a href="https://veridelisi.github.io" target="_blank">veridelisi.github.io</a> · For educational purposes only</p>
+</footer>
+</body>
+</html>
